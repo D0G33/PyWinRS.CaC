@@ -2,19 +2,17 @@ import base64
 from http.server import *
 import atexit
 
+class exit:
+    def __init__(self,server):
+        self.server = server
 
-encoded = base64.encode("temp")
-server = HTTPServer
-
-def exitFunc():
-    server.server_close()
-
-
-def runServer(self,file,port=27555):
+    def exitFunc(self):
+        self.server.server_exit()
+def runServer(file,port=27555):
 
     f = open(file,'rb')
     content = f.read()
-    encoded = base64.encode(content)
+    encoded = base64.b64encode(content)
 
     class createClass(BaseHTTPRequestHandler):
         def do_GET(self):
@@ -24,6 +22,10 @@ def runServer(self,file,port=27555):
             self.wfile.write(encoded)
 
     server_address = ('', port)
-    self.server = HTTPServer(server_address,createClass)
-    atexit.register(exitFunc)
+    server = HTTPServer(server_address,createClass)
+    ex = exit(server)
+    atexit.register(ex.exitFunc)
+    server.serve_forever()
 
+if __name__ == "__main__":
+    runServer("olli-the-polite-cat.jpg")
