@@ -1,7 +1,6 @@
 import base64
 from http.server import *
 import atexit
-import rsa
 import CustomCrypto as cc
 
 class exit:

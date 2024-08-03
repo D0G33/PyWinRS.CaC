@@ -1,6 +1,5 @@
 import base64
 import urllib.request
-import time
 import CustomCrypto as cc
 
 def getMessageEncoded(ip,port,key="veryEpicKey"):
