@@ -1,4 +1,5 @@
 import os
+from multiprocessing import Process
 
 def zip(file,name="package"):
     os.system("del "+name+".7z")
